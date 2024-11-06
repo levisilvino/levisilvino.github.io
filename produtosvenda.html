@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Meu Site</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <!-- Menu -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="/api/placeholder/40/40" alt="Logo">
+            </a>
+            <button class="menu-button">☰</button>
+            <ul class="menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="consultoria.html">Consultoria</a></li>
+                <li><a href="comunicação.html">Comunicação</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho da página de produtos -->
+    <header class="produtos-header">
+        <h1>Nossos Produtos</h1>
+        <p>Conheça nossa linha completa de produtos. Qualidade e inovação para atender todas as suas necessidades.</p>
+    </header>
+
+    <!-- Grid de produtos -->
+    <div class="produtos-grid">
+        <!-- Produto 1 -->
+        <div class="produto-card">
+            <img src="/api/placeholder/400/200" alt="Produto 1" class="produto-img">
+            <div class="produto-info">
+                <h3>Produto 1</h3>
+                <p>Descrição detalhada do produto 1. Características e benefícios principais.</p>
+                <div class="produto-preco">R$ 199,90</div>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+        <!-- Produto 2 -->
+        <div class="produto-card">
+            <img src="/api/placeholder/400/200" alt="Produto 2" class="produto-img">
+            <div class="produto-info">
+                <h3>Produto 2</h3>
+                <p>Descrição detalhada do produto 2. Características e benefícios principais.</p>
+                <div class="produto-preco">R$ 299,90</div>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+        <!-- Produto 3 -->
+        <div class="produto-card">
+            <img src="/api/placeholder/400/200" alt="Produto 3" class="produto-img">
+            <div class="produto-info">
+                <h3>Produto 3</h3>
+                <p>Descrição detalhada do produto 3. Características e benefícios principais.</p>
+                <div class="produto-preco">R$ 159,90</div>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+        <!-- Produto 4 -->
+        <div class="produto-card">
+            <img src="/api/placeholder/400/200" alt="Produto 4" class="produto-img">
+            <div class="produto-info">
+                <h3>Produto 4</h3>
+                <p>Descrição detalhada do produto 4. Características e benefícios principais.</p>
+                <div class="produto-preco">R$ 399,90</div>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+        <!-- Produto 5 -->
+        <div class="produto-card">
+            <img src="/api/placeholder/400/200" alt="Produto 5" class="produto-img">
+            <div class="produto-info">
+                <h3>Produto 5</h3>
+                <p>Descrição detalhada do produto 5. Características e benefícios principais.</p>
+                <div class="produto-preco">R$ 259,90</div>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+        <!-- Produto 6 -->
+        <div class="produto-card">
+            <img src="/api/placeholder/400/200" alt="Produto 6" class="produto-img">
+            <div class="produto-info">
+                <h3>Produto 6</h3>
+                <p>Descrição detalhada do produto 6. Características e benefícios principais.</p>
+                <div class="produto-preco">R$ 179,90</div>
+                <a href="#" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Código do Menu Mobile
+        const menuButton = document.querySelector('.menu-button');
+        const menu = document.querySelector('.menu');
+
+        menuButton.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container')) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

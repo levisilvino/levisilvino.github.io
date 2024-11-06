@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoria de Comunicação</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+     <!-- Menu -->
+     <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="/api/placeholder/40/40" alt="Logo">
+            </a>
+            <button class="menu-button">☰</button>
+            <ul class="menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="consultoria.html">Consultoria</a></li>
+                <li><a href="comunicação.html">Comunicação</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho da página -->
+    <header class="servicos-header">
+        <h1>Nossos Serviços de Consultoria</h1>
+        <p>Oferecemos soluções personalizadas para impulsionar seu negócio ao próximo nível, com foco em resultados e inovação.</p>
+    </header>
+
+    <!-- Seção de Consultoria -->
+    <section class="consultoria-section">
+        <div class="consultoria-container" style="flex-direction: row-reverse;">
+            <div class="consultoria-info">
+                <h2>Consultoria Especializada</h2>
+                <p>Nossa consultoria oferece soluções personalizadas para os desafios do seu negócio. Com uma equipe de especialistas experientes, desenvolvemos estratégias sob medida para maximizar seus resultados.</p>
+                <p>Utilizamos metodologias comprovadas e as melhores práticas do mercado para garantir que sua empresa alcance todo seu potencial.</p>
+            </div>
+            <div class="consultoria-img">
+                <img src="/api/placeholder/600/400" alt="Consultoria">
+            </div>
+        </div>
+    </section>
+
+     <!-- Benefícios da Consultoria -->
+     <section class="beneficios">
+        <h3>Benefícios da Nossa Consultoria</h3>
+        <div class="beneficios-grid">
+            <div class="beneficio-card">
+                <h4>Análise Estratégica</h4>
+                <p>Avaliação completa do seu negócio com identificação de oportunidades e pontos de melhoria.</p>
+            </div>
+            <div class="beneficio-card">
+                <h4>Plano de Ação</h4>
+                <p>Desenvolvimento de estratégias personalizadas e planos de ação detalhados para atingir seus objetivos.</p>
+            </div>
+            <div class="beneficio-card">
+                <h4>Acompanhamento</h4>
+                <p>Suporte contínuo e monitoramento dos resultados para garantir o sucesso da implementação.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h3>Pronto para Transformar seu Negócio?</h3>
+            <p>Entre em contato conosco hoje mesmo e descubra como nossa consultoria pode ajudar sua empresa a alcançar novos patamares de sucesso.</p>
+            <a href="contato.html" class="cta-button">Agende uma Consulta</a>
+        </div>
+    </section>
+
+    <script>
+        // Código do Menu Mobile
+        const menuButton = document.querySelector('.menu-button');
+        const menu = document.querySelector('.menu');
+
+        menuButton.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container')) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+
+    <!-- Seção do Especialista -->
+    <section class="especialista-section">
+        <div class="especialista-container">
+            <div class="especialista-profile">
+                <img src="/api/placeholder/250/250" alt="Foto do Especialista" class="especialista-img">
+                <h2>Levi Silvino Barcelos</h2>
+                <p class="especialista-cargo">Comunicolo Organizacional</p>
+            </div>
+            <div class="especialista-info">
+                <div class="credenciais">
+                    <h3>Formação e Certificações</h3>
+                    <ul>
+                        <li>Doutorado em Administração de Empresas - USP</li>
+                        <li>MBA em Gestão Estratégica - FGV</li>
+                        <li>Certificação PMP (Project Management Professional)</li>
+                        <li>Especialização em Transformação Digital - MIT</li>
+                        <li>15+ anos de experiência em consultoria estratégica</li>
+                    </ul>
+                </div>
+                <div class="credenciais">
+                    <h3>Áreas de Especialização</h3>
+                    <ul>
+                        <li>Planejamento Estratégico</li>
+                        <li>Gestão de Mudança Organizacional</li>
+                        <li>Transformação Digital</li>
+                        <li>Otimização de Processos</li>
+                        <li>Desenvolvimento de Liderança</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="portfolio-section">
+        <div class="portfolio-header">
+            <h2>Projetos Realizados</h2>
+            <p>Conheça alguns dos casos de sucesso da nossa consultoria</p>
+        </div>
+        
+        <div class="portfolio-grid">
+            <!-- Projeto 1 -->
+            <div class="portfolio-item">
+                <div class="portfolio-item-inner">
+                    <div class="portfolio-front">
+                        <img src="/api/placeholder/400/200" alt="ProjetoComunicação 1" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <h3>Transformação Digital Varejo</h3>
+                            <p>Implementação de estratégia omnichannel para rede varejista, resultando em aumento de 150% nas vendas online.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">E-commerce</span>
+                                <span class="tag">Digital</span>
+                                <span class="tag">Varejo</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-back">
+                        <h3>Detalhes do Projeto</h3>
+                        <p>Nossa equipe implementou uma transformação digital completa, incluindo:</p>
+                        <ul style="margin-bottom: 20px; padding-left: 20px;">
+                            <li>Integração de canais online e offline</li>
+                            <li>Implementação de CRM</li>
+                            <li>Treinamento de equipe</li>
+                        </ul>
+                        <div class="portfolio-actions">
+                            <button class="voltar-btn">← Voltar</button>
+                            <a href="projeto-detalhes.html?id=1" class="ver-mais-btn">Ver projeto completo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projeto 2 -->
+            <div class="portfolio-item">
+                <div class="portfolio-item-inner">
+                    <div class="portfolio-front">
+                        <img src="/api/placeholder/400/200" alt="ProjetoComunicação 2" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <h3>Otimização de Processos</h3>
+                            <p>Reestruturação completa dos processos industriais, resultando em redução de 30% nos custos operacionais.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Indústria</span>
+                                <span class="tag">Processos</span>
+                                <span class="tag">Otimização</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-back">
+                        <h3>Detalhes do Projeto</h3>
+                        <p>Realizamos uma análise completa e otimização de processos, incluindo:</p>
+                        <ul style="margin-bottom: 20px; padding-left: 20px;">
+                            <li>Mapeamento de processos</li>
+                            <li>Automação de rotinas</li>
+                            <li>Redução de desperdícios</li>
+                        </ul>
+                        <div class="portfolio-actions">
+                            <button class="voltar-btn">← Voltar</button>
+                            <a href="projeto-detalhes.html?id=2" class="ver-mais-btn">Ver projeto completo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projeto 3 -->
+            <div class="portfolio-item">
+                <div class="portfolio-item-inner">
+                    <div class="portfolio-front">
+                        <img src="/api/placeholder/400/200" alt="ProjetoComunicação 3" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <h3>Expansão Internacional</h3>
+                            <p>Estratégia de entrada em mercados internacionais para empresa de tecnologia em crescimento.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Internacional</span>
+                                <span class="tag">Estratégia</span>
+                                <span class="tag">Tech</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-back">
+                        <h3>Detalhes do Projeto</h3>
+                        <p>Desenvolvemos uma estratégia completa de internacionalização, incluindo:</p>
+                        <ul style="margin-bottom: 20px; padding-left: 20px;">
+                            <li>Análise de mercado</li>
+                            <li>Planejamento estratégico</li>
+                            <li>Adaptação de produtos</li>
+                        </ul>
+                        <div class="portfolio-actions">
+                            <button class="voltar-btn">← Voltar</button>
+                            <a href="projeto-detalhes.html?id=3" class="ver-mais-btn">Ver projeto completo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para inicializar os cards
+        function initializePortfolioCards() {
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                // Manipulador de clique para o card
+                item.addEventListener('click', function(e) {
+                    // Não faz flip se clicar nos botões
+                    if (e.target.closest('.ver-mais-btn') || e.target.closest('.voltar-btn')) {
+                        return;
+                    }
+                    this.classList.toggle('flipped');
+                });
+
+                // Manipulador para o botão voltar
+                const voltarBtn = item.querySelector('.voltar-btn');
+                if (voltarBtn) {
+                    voltarBtn.addEventListener('click', function(e) {
+                        e.stopPropagation(); // Impede a propagação do clique
+                        item.classList.remove('flipped');
+                    });
+                }
+
+                // Manipulador para o botão ver mais
+                const verMaisBtn = item.querySelector('.ver-mais-btn');
+                if (verMaisBtn) {
+                    verMaisBtn.addEventListener('click', function(e) {
+                        e.stopPropagation(); // Impede a propagação do clique
+                        // A navegação acontece naturalmente pelo link
+                    });
+                }
+            });
+        }
+
+        // Inicializa os cards quando o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', initializePortfolioCards);
+    </script>
+</body>
+</html>

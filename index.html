@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <!-- Menu com Logo (mantido da versão anterior) -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="/api/placeholder/40/40" alt="Logo">
+            </a>
+            <button class="menu-button">☰</button>
+            <ul class="menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="consultoria.html">Consultoria</a></li>
+                <li><a href="comunicação.html">Comunicação</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- NOVO: Carrossel -->
+    <div class="carousel">
+        <button class="carousel-button prev">❮</button>
+        <button class="carousel-button next">❯</button>
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <img src="/api/placeholder/1400/500" alt="Imagem 1">
+            </div>
+            <div class="carousel-item">
+                <img src="/api/placeholder/1400/500" alt="Imagem 2">
+            </div>
+            <div class="carousel-item">
+                <img src="/api/placeholder/1400/500" alt="Imagem 3">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Código do Menu Mobile (mantido da versão anterior)
+        const menuButton = document.querySelector('.menu-button');
+        const menu = document.querySelector('.menu');
+
+        menuButton.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container')) {
+                menu.classList.remove('active');
+            }
+        });
+
+
+        // NOVO: Código do Carrossel
+        const carousel = document.querySelector('.carousel-inner');
+        const items = document.querySelectorAll('.carousel-item');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        });
+
+        // Automatizar o carrossel
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        }, 5000); // Muda a cada 5 segundos
+    </script>
+    <!-- [Menu e Carrossel anteriores permanecem iguais] -->
+
+    <!-- NOVO: Seção 1 - Imagem à esquerda, texto à direita -->
+    <section class="section">
+        <img src="/api/placeholder/600/400" alt="Imagem Seção 1">
+        <div class="section-text">
+            <h2>Projeto Legisla Pesca</h2>
+            <p>Voce pode ver todas as leis normas registradas da pesca aqui.</p>
+            <p></p>
+            <a href="projetoLegisla.html" class="btn">Saiba Mais</a>
+        </div>
+    </section>
+
+    <!-- NOVO: Seção 2 - Texto à esquerda, imagem à direita -->
+    <section class="section" style="flex-direction: row-reverse;">
+        <img src="/api/placeholder/600/400" alt="Imagem Seção 2">
+        <div class="section-text">
+            <h2>Viu algum erro ou algo desatualizado?</h2>
+            <p>Voce pode mandar a versão atualizada aqui</p>
+            <p></p>
+            <a href="inserirLei.html" class="btn">Conheça Mais</a>
+        </div>
+    </section>
+
+    <!-- Seção de Consultoria -->
+    <section class="consultoria-section"> 
+        <div class="servicos-comunicacao-orgaos-container">
+            <div class="servicos-comunicacao-orgaos-info">
+                <h2>Consultoria Especializada</h2>
+                <p>Nossa consultoria oferece soluções personalizadas para os desafios do seu negócio. Com uma equipe de especialistas experientes, desenvolvemos estratégias sob medida para maximizar seus resultados.</p>
+                <p>Utilizamos metodologias comprovadas e as melhores práticas do mercado para garantir que sua empresa alcance todo seu potencial.</p>
+                <a href="consultoria.html" class="btn">Conheça Mais</a>
+            </div>
+            <div class="consultoria-img">
+                <img src="/api/placeholder/600/400" alt="Consultoria">
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Serviços de Comunicação para Órgãos Públicos -->
+    <section class="servicos-comunicacao-orgaos">
+        <div class="servicos-comunicacao-orgaos-container" style="flex-direction: row-reverse;">
+          <div class="servicos-comunicacao-orgaos-info">
+            <h2>Comunicação para Órgãos Públicos</h2>
+            <p>Nossos serviços de comunicação são especialmente projetados para atender às necessidades únicas de órgãos públicos.</p>
+            <ul>
+              <li>Assessoria de Imprensa e Relações Públicas</li>
+              <li>Planejamento Estratégico de Comunicação</li>
+              <li>Treinamento em Comunicação Pública</li>
+              <li>Transparência e Accountability</li>
+              <p></p>
+            <a href="comunicação.html" class="btn">Conheça Mais</a>
+            </ul>
+          </div>
+          <div class="servicos-comunicacao-orgaos-img">
+            <img src="/api/placeholder/600/400" alt="Comunicação para Órgãos Públicos">
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h3>Pronto para Transformar seu Negócio?</h3>
+            <p>Entre em contato conosco hoje mesmo e descubra como nossa consultoria pode ajudar sua empresa a alcançar novos patamares de sucesso.</p>
+            <a href="contato.html" class="cta-button">Agende uma Consulta</a>
+        </div>
+    </section>
+   
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Lei</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <!-- Menu -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="/api/placeholder/40/40" alt="Logo">
+            </a>
+            <button class="menu-button">☰</button>
+            <ul class="menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="consultoria.html">Consultoria</a></li>
+                <li><a href="comunicação.html">Comunicação</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho da página -->
+    <header class="servicos-header">
+        <h1>Ajude a Comunidade</h1>
+        <p>Colabora com a gente para sempre termos os dados mais atualizados!</p>
+    </header>
+
+
+    <div class="form-container">
+        <h2>Formulário de Registro</h2>
+        <!-- Substitua o ACTION pela URL do seu Google Forms -->
+        <form id="contactForm" target="_blank" action="https://docs.google.com/forms/d/e/1FAIpQLSdKgUXjATOiNqjgJO5zdmBx5GexEW7z9Qo-rWQLyKRE8wxUKw/formResponse" method="POST">
+            <div class="form-group">
+                <label for="Tipo">Tipo *</label>
+                <select id="assunto" name="entry.760361630" required>
+                    <option value="">Selecione um Tipo</option>
+                    <option value="Lei">Lei</option>
+                    <option value="Decreto">Decreto</option>
+                    <option value="Portaria">Portaria</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="NúmerodoDocumento">Número do Documento  *</label>
+                <input type="NúmerodoDocumento" id="NúmerodoDocumento" name="entry.538192434" required>
+            </div>
+
+            <div class="form-group">
+                <label for="data">Data de Publicação *</label>
+                <input type="date" id="data" name="entry.1586656267" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Nome">Nome *</label>
+                <input type="nome" id="nome" name="entry.1467472036" required>
+            </div>
+
+            <div class="form-group">
+                <label for="explicação">Explicação *</label>
+                <textarea id="explicação" name="entry.88996057" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Enviar Mensagem</button>
+        </form>
+    </div>
+
+
+</body>
+</html>

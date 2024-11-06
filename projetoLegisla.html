@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Consulta de Leis/Decretos</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    
+</head>
+<body>
+     <!-- Menu -->
+     <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="/api/placeholder/40/40" alt="Logo">
+            </a>
+            <button class="menu-button">☰</button>
+            <ul class="menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="consultoria.html">Consultoria</a></li>
+                <li><a href="comunicação.html">Comunicação</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="produtos-header">
+        <h1>Consulta de Leis/Decretos</h1>
+    </header>  
+        <div id="errorMessage" class="error"></div>
+
+        <div class="search-container">
+            <label for="search">Buscar:</label>
+            <input type="text" id="search" placeholder="Digite o nome da lei ou decreto...">
+        </div>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label for="typeFilter">Tipo:</label>
+                <select id="typeFilter">
+                    <option value="">Todos</option>
+                    <option value="Lei">Lei</option>
+                    <option value="Decreto">Decreto</option>
+                    <option value="Portaria">Portaria</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="statusFilter">Status:</label>
+                <select id="statusFilter">
+                    <option value="">Todos</option>
+                    <option value="Análise">Em Análise</option>
+                    <option value="Vigor">Em Vigor</option>
+                    <option value="Revogado">Revogado</option>
+                </select>
+            </div>
+        </div>
+
+        <table id="respostasTable">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Número do Documento</th>
+                    <th>Nome</th>
+                    <th>Explicação</th>
+                    <th>Status</th>
+                    <th>Data de Publicação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="6" class="loading">Carregando dados...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const sheetURL = 'https://docs.google.com/spreadsheets/d/1flZJT0T3wlVGmyws1pWoIGOPTmoW64CEcbQARD1jwC0/gviz/tq?sheet=Respostas';
+        let allData = [];
+
+        // Função para mostrar erro
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        // Função para criar badge de status
+        function getStatusBadge(status) {
+            const statusClass = status.toLowerCase().replace(' ', '-');
+            return `<span class="status-badge status-${statusClass}">${status}</span>`;
+        }
+
+        // Função para buscar dados com tratamento de erro
+        async function fetchData() {
+    try {
+        const response = await fetch(sheetURL);
+        if (!response.ok) {
+            throw new Error('Erro ao carregar os dados');
+        }
+        const data = await response.text();
+        const jsonData = JSON.parse(data.substr(47).slice(0, -2)).table;
+
+        allData = jsonData.rows.map(row => ({
+            tipo: row.c[1]?.v || '', // Tipo
+            numeroDocumento: row.c[2]?.v || '', // Número do Documento
+            nome: row.c[4]?.v || '', // Nome
+            explicacao: row.c[5]?.v || '', // Explicação
+            status: row.c[6]?.v || 'Não Revisado', // Status (definido como "Em Análise" se vazio)
+            dataPublicacao: row.c[3]?.v || 'Não informado' // Data de Publicação
+        }));
+
+        filterAndDisplayData();
+    } catch (error) {
+        showError(`Erro ao buscar dados: ${error.message}`);
+        console.error('Erro:', error);
+    }
+}
+
+
+        // Função para filtrar e exibir dados
+        function filterAndDisplayData() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const typeFilter = document.getElementById('typeFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+
+            const filteredData = allData.filter(item => {
+                const nome = item.nome || ''; // Certifique-se de que é uma string
+                const tipo = item.tipo || '';
+                const explicacao = item.explicacao || '';
+                const numeroDocumento = item.numeroDocumento || ''; // Corrigido para númeroDocumento
+
+                const matchesSearch = nome.toLowerCase().includes(searchTerm) || 
+                                    tipo.toLowerCase().includes(searchTerm) ||
+                                    explicacao.toLowerCase().includes(searchTerm) ||
+                                    numeroDocumento.toString().toLowerCase().includes(searchTerm) ||
+                                    (item.dataPublicacao && item.dataPublicacao.toString().includes(searchTerm));
+                const matchesType = !typeFilter || tipo === typeFilter;
+                const matchesStatus = !statusFilter || item.status === statusFilter;
+                return matchesSearch && matchesType && matchesStatus;
+            });
+
+            const tbody = document.getElementById('respostasTable').querySelector('tbody');
+            tbody.innerHTML = '';
+
+            if (filteredData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center;">Nenhum resultado encontrado</td></tr>';
+                return;
+            }
+
+            filteredData.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${item.tipo}</td>
+                    <td>${item.numeroDocumento}</td> <!-- Corrigido para numeroDocumento -->
+                    <td>${item.nome}</td>
+                    <td>${item.explicacao}</td>
+                    <td>${getStatusBadge(item.status)}</td>
+                    <td>${item.dataPublicacao}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+
+        // Debounce para a busca
+        const debouncedFilter = _.debounce(filterAndDisplayData, 300);
+
+        // Event listeners
+        document.getElementById('search').addEventListener('input', debouncedFilter);
+        document.getElementById('typeFilter').addEventListener('change', filterAndDisplayData);
+        document.getElementById('statusFilter').addEventListener('change', filterAndDisplayData);
+
+        // Inicialização
+        fetchData();
+    </script>
+</body>
+</html>
